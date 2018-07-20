@@ -1,0 +1,27 @@
+project.ext.mainclass = 'practicahadoop.TweetJob'
+project.ext.archiveName = 'practica_hadoop.jar'
+
+apply from: '/root/java/labs/build.gradle'
+
+configurations {
+	myDep
+}
+
+dependencies {
+	myDep 'com.google.code.gson:gson:2.8.4'
+	myDep 'com.google.guava:guava:25.1-android'
+	compile 'com.google.code.gson:gson:2.8.4'
+	compile 'com.google.guava:guava:25.1-android'
+}
+
+
+jar {
+	from { configurations.myDep.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+
+
+
+
+
+
